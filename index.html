@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Lo que siembras hoy crece · Xlatierra</title>
+<meta name="description" content="Sesión de Xlatierra: el cambio climático en 30 minutos, un árbol colectivo y tu plan de acción.">
+<link rel="icon" href="img/icono.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caudex:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilos.css">
+<link rel="stylesheet" href="sesion.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="logo" href="#inicio"><img src="img/logo-rectangular.png" alt="Xlatierra"></a>
+    <nav>
+      <span class="progress" id="progress" aria-hidden="true"></span>
+      <button class="btn btn-ghost btn-sm" id="presentBtn" type="button" title="Pantalla completa y flechas del teclado">▶ Presentar</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- 1 · PORTADA -->
+<section class="slide hero" id="inicio">
+  <div class="narrow center">
+    <img class="hero-img" src="img/pose-espiritu-tierra.png" alt="Ameyalli, el espíritu del agua">
+    <p class="kicker">Xlatierra · Sesión especial</p>
+    <h1>Lo que siembras hoy crece</h1>
+    <p class="lead">El cambio climático en 30 minutos, un árbol que hacemos entre todas y todos, y un plan para tu vida.</p>
+    <p class="motto">Saber, entender, actuar.</p>
+    <a class="btn btn-primary" href="#levanta">Empezar ↓</a>
+  </div>
+</section>
+
+<!-- 2 · LEVANTA LA MANO -->
+<section class="slide" id="levanta">
+  <div class="narrow">
+    <p class="kicker">Para empezar</p>
+    <h2>Levanta la mano si…</h2>
+    <ol class="hands" id="hands">
+      <li>este año sentiste más calor de lo normal.</li>
+      <li>alguna vez se ha ido el agua en tu casa o en tu colonia.</li>
+      <li>has visto una noticia sobre el clima y no supiste si creerle.</li>
+      <li>alguna vez pensaste en dejar la escuela… y aquí sigues.</li>
+    </ol>
+    <button class="btn btn-ghost" type="button" id="handsNext">Siguiente frase</button>
+    <div class="ask"><span>💬 Platícanos</span>¿Qué palabra se te viene a la mente cuando escuchas «cambio climático»?</div>
+  </div>
+</section>
+
+<!-- 3 · QUÉ ES -->
+<section class="slide" id="que-es">
+  <div class="narrow">
+    <div class="guide-row"><img src="img/personaje-espiritu.png" alt=""><div><p class="kicker">Saber</p><h2>¿Qué es el cambio climático?</h2></div></div>
+    <p class="big">El cambio climático es el calentamiento rápido y duradero del planeta causado por actividades humanas. Al quemar carbón, petróleo y gas, y al talar bosques, llenamos la atmósfera de gases que atrapan calor, como una cobija extra. Eso cambia las lluvias e intensifica las olas de calor, las sequías y los huracanes.</p>
+    <div class="stats">
+      <div class="stat"><b>1.1 °C</b>calentamiento global respecto a 1850–1900<i>IPCC AR6</i></div>
+      <div class="stat"><b>3.2 °C</b>por siglo: la velocidad a la que se calienta México (el promedio mundial: 2 °C)<i>NDC 3.0 México, p. 20</i></div>
+      <div class="stat"><b>18</b>estados suspendieron clases por calor extremo en 2023<i>NDC 3.0 México, p. 149</i></div>
+    </div>
+    <div class="ask"><span>💬 Platícanos</span>¿Has sentido alguno de estos cambios donde vives?</div>
+  </div>
+</section>
+
+<!-- 4 · ADIVINA -->
+<section class="slide" id="adivina">
+  <div class="narrow">
+    <div class="guide-row"><img src="img/pose-ajolote-pensativo.png" alt=""><div><p class="kicker">Entender</p><h2>¡Adivina!</h2></div></div>
+    <p class="muted">Vota levantando la mano antes de ver la respuesta. Equivocarte antes de saber la respuesta te ayuda a recordarla.</p>
+    <div id="guesses"></div>
+  </div>
+</section>
+
+<!-- 5 · MITO O DATO -->
+<section class="slide" id="mito">
+  <div class="narrow">
+    <div class="guide-row"><img src="img/pose-ajolote-duda.png" alt=""><div><p class="kicker">Entender</p><h2>¿Mito o dato?</h2></div></div>
+    <p class="muted">Mano arriba si crees que es <strong>dato</strong>. Mano abajo si crees que es <strong>mito</strong>.</p>
+    <div class="deck" id="deck"></div>
+  </div>
+</section>
+
+<!-- 6 · DE DÓNDE ERES -->
+<section class="slide" id="mapa">
+  <div class="narrow center">
+    <p class="kicker">Tu territorio</p>
+    <h2>¿De dónde eres?</h2>
+    <p class="big">Busquemos tu estado, o el de tu familia, en el mapa de impactos en México: sequía, costas, huracanes, campo y soluciones, región por región.</p>
+    <a class="btn btn-primary" href="https://analiguti2607-cyber.github.io/xlatierra-sitio/mapa-mexico.html" target="_blank" rel="noopener">Abrir el mapa de México ↗</a>
+    <div class="ask"><span>💬 Platícanos</span>¿Lo que dice el mapa se parece a lo que vives en tu estado?</div>
+  </div>
+</section>
+
+<!-- 7 · TU CARRERA -->
+<section class="slide" id="carrera">
+  <div class="wrap">
+    <div class="guide-row"><img src="img/pose-jaguar-planta.png" alt=""><div><p class="kicker">Lo que estudias importa</p><h2>Tu carrera también es climática</h2></div></div>
+    <p class="big">No hace falta estudiar «algo de medio ambiente» para cuidar el planeta. Lo que aprendes hoy es una herramienta, y el clima necesita de todas.</p>
+    <div class="jobs">
+      <div class="job"><span>📊</span><b>Contabilidad y administración</b>Sin presupuesto no hay proyecto: las finanzas deciden qué soluciones se hacen realidad.</div>
+      <div class="job"><span>⚙️</span><b>Ingeniería y mecánica</b>Energía limpia, transporte y máquinas que gastan menos.</div>
+      <div class="job"><span>🩺</span><b>Salud y enfermería</b>El calor y enfermedades como el dengue llegan a las clínicas: quien cuida la salud está en primera línea.</div>
+      <div class="job"><span>🛒</span><b>Ventas y negocios</b>Decides qué se ofrece y cómo: productos locales, menos desperdicio.</div>
+      <div class="job"><span>🍲</span><b>Cocina y alimentos</b>Lo que comemos y cómo se produce también es clima.</div>
+      <div class="job"><span>🎨</span><b>Diseño, comunicación y redes</b>Una historia bien contada mueve a más personas que una lista de cifras.</div>
+      <div class="job"><span>⚖️</span><b>Derecho y gobierno</b>Las reglas deciden quién está protegido y quién no.</div>
+      <div class="job"><span>🔧</span><b>Oficios</b>Electricidad, construcción, plomería: casas más frescas, fugas reparadas, paneles solares instalados.</div>
+      <div class="job"><span>🌽</span><b>Campo</b>Cuidar el suelo, las semillas y el agua.</div>
+      <div class="job"><span>📚</span><b>Educación</b>Explicar algo a otra persona es multiplicarlo.</div>
+    </div>
+    <div class="ask"><span>💬 Platícanos</span>¿Qué estudias o en qué trabajas? Encontremos juntos cómo se conecta con el clima.</div>
+  </div>
+</section>
+
+<!-- 8 · REFUGIO -->
+<section class="slide" id="refugio">
+  <div class="narrow center">
+    <p class="kicker">Para respirar y seguir</p>
+    <h2>Si esto te abruma, es normal</h2>
+    <p class="big">Sentir ansiedad, tristeza, miedo o enojo frente al cambio climático es una respuesta razonable a un problema real. Lo que suele ayudar: nombrar lo que sientes y actuar con otras personas.</p>
+    <div class="breath">
+      <div class="bubble-w"><div class="bubble" id="bubble"></div><img src="img/pose-espiritu-meditando.png" alt=""></div>
+      <div class="b-label" id="bLabel" aria-live="polite">Tres respiraciones con Ameyalli</div>
+      <button class="btn btn-primary" id="bBtn" type="button">Respirar juntos</button>
+    </div>
+    <p><a href="https://analiguti2607-cyber.github.io/xlatierra-sitio/refugio.html" target="_blank" rel="noopener">Conoce el Refugio de líderes ↗</a></p>
+  </div>
+</section>
+
+<!-- 9 · EL ÁRBOL -->
+<section class="slide" id="arbol">
+  <div class="wrap">
+    <p class="kicker">Actuar · juntos</p>
+    <h2>El árbol de lo que siembras</h2>
+    <div class="tree-grid">
+      <div class="tree-art" aria-hidden="true">
+        <div class="t-leaves">🍃 Hojas</div>
+        <div class="t-trunk">Tronco</div>
+        <div class="t-roots">Raíces</div>
+      </div>
+      <div class="tree-parts">
+        <div class="part p-leaves"><b>🍃 Hojas · Lo que quiero sembrar</b>¿Qué quieres lograr con lo que estudias, y cómo puede ayudar a tu comunidad o al planeta?</div>
+        <div class="part p-trunk"><b>🪵 Tronco · Mi superpoder</b>¿Qué sabes hacer bien? Cocinar, escuchar, organizar, arreglar cosas, hacer reír…</div>
+        <div class="part p-roots"><b>🌱 Raíces · Lo que me sostiene</b>¿Qué o quién te impulsa a seguir estudiando?</div>
+        <ol class="steps">
+          <li><b>Platica</b> 3 minutos con quien tienes al lado: ¿cuál es tu superpoder?</li>
+          <li><b>Escribe</b> en tu papel la parte del árbol que le toca a tu zona.</li>
+          <li><b>Pégalo</b> en el árbol y mira cómo crece.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 · PLAN DE ACCIÓN -->
+<section class="slide" id="plan">
+  <div class="narrow">
+    <div class="guide-row"><img src="img/pose-nutria-feliz.png" alt=""><div><p class="kicker">Actuar · tú</p><h2>Tu plan de acción</h2></div></div>
+    <p>Cinco preguntas para tu vida. Al final, Lontra la firma contigo y te la llevas en una tarjeta. Lo que escribes se queda solo en tu celular: no se envía a ningún lado.</p>
+    <form class="plan" id="planForm" onsubmit="return false">
+      <label>1. ¿Qué quiero lograr con lo que estudio?<textarea id="pMeta" maxlength="140" rows="2" placeholder="Terminar la prepa y…"></textarea></label>
+      <label>2. ¿Cómo puede ayudar eso a mi comunidad o al planeta?<textarea id="pAyuda" maxlength="140" rows="2"></textarea></label>
+      <label>3. Mi primer paso esta semana<textarea id="pPaso" maxlength="120" rows="2"></textarea></label>
+      <label>4. ¿Con quién lo voy a hacer?<input id="pQuien" maxlength="60" type="text"></label>
+      <label>5. ¿Cuándo empiezo?<input id="pCuando" maxlength="60" type="text"></label>
+      <label>Tu nombre o apodo (opcional)<input id="pNombre" maxlength="40" type="text"></label>
+      <button class="btn btn-primary" id="pMake" type="button">Crear mi tarjeta</button>
+      <p class="hint" id="pHint"></p>
+    </form>
+    <canvas id="pCanvas" width="1080" height="1350" hidden></canvas>
+    <div id="pDl"></div>
+    <p class="muted small">¿Sin celular o sin datos? Escribe tus cinco respuestas en una hoja y guárdala donde la veas seguido.</p>
+  </div>
+</section>
+
+<!-- 11 · CIERRE -->
+<section class="slide" id="cierre">
+  <div class="wrap center">
+    <p class="kicker">Para cerrar</p>
+    <h2>En una palabra: ¿con qué te vas hoy?</h2>
+    <div class="qrs">
+      <div class="qr"><img src="img/qr-instagram.svg" alt="Código QR al Instagram de Xlatierra"><b>Síguenos</b>@x.latierra</div>
+      <div class="qr"><img src="img/qr-sitio.svg" alt="Código QR al sitio de Xlatierra"><b>Toma los cursos gratis</b>Cuatro módulos con certificado</div>
+    </div>
+    <p class="motto">Saber, entender, actuar.</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div><img src="img/logo-circular.png" alt="Xlatierra" style="height:56px"></div>
+    <div><a href="https://analiguti2607-cyber.github.io/xlatierra-sitio/" target="_blank" rel="noopener">Sitio de Xlatierra</a><br><a href="https://www.instagram.com/x.latierra/" target="_blank" rel="noopener">@x.latierra</a><br>© 2026 Xlatierra</div>
+  </div>
+</footer>
+
+<script src="sesion.js"></script>
+</body>
+</html>
