@@ -7,6 +7,39 @@
 (function () {
   "use strict";
 
+  /* ---------- SLIDO ----------
+     Cuando crees tu slido, pega aquí el código (sin #) y el enlace.
+     Mientras esté vacío, los recuadros de Slido no aparecen. */
+  var SLIDO = { codigo: "", enlace: "" };
+
+  /* ---------- EL ÁRBOL: las tres preguntas, en orden ---------- */
+  var TREE = [
+    {part: "roots", label: "🌱 Raíz · Lo que me sostiene", q: "¿Qué o quién te impulsa a seguir estudiando?"},
+    {part: "trunk", label: "🪵 Tronco · Mi superpoder", q: "¿Qué sabes hacer bien? Cocinar, escuchar, organizar, arreglar cosas, hacer reír…"},
+    {part: "leaves", label: "🍃 Hoja · Lo que quiero sembrar", q: "¿Qué quieres sembrar con lo que estudias?"}
+  ];
+
+  /* ---------- ¿QUÉ TE IMPORTA? ----------
+     Cada dato viene del sitio de Xlatierra, con su fuente. */
+  var CARES = [
+    {i: "🏠", t: "Mi familia", b: "Cuidar a tu familia hoy también es protegerla del calor.",
+     n: "45 M", d: "de niñas, niños y adolescentes en América Latina están expuestos a olas de calor extremas", s: "UNICEF"},
+    {i: "🏘️", t: "Mi colonia", b: "Cuando falta el agua o se inunda la calle, lo vive primero la colonia.",
+     n: "64%", d: "del territorio de México tuvo estrés hídrico en 2025; ahí vive cerca del 70% de la población", s: "NDC 3.0 de México"},
+    {i: "🍲", t: "La comida", b: "Lo que comes depende de que llueva a tiempo en el campo.",
+     n: "2.8 millones", d: "de hectáreas de cultivo se perdieron por sequía entre 2018 y 2023, sobre todo maíz y frijol", s: "NDC 3.0 de México, con datos del SIAP"},
+    {i: "🩺", t: "La salud", b: "El calor y los cambios en las lluvias modifican dónde y cuándo pueden vivir los mosquitos que transmiten el dengue.",
+     n: "115 M", d: "de niñas, niños y adolescentes en América Latina están expuestos al dengue", s: "UNICEF"},
+    {i: "💰", t: "El dinero y el trabajo", b: "Los desastres y las sequías cuestan: a las familias, a los negocios y al país.",
+     n: "25%", d: "del PIB de México de 2024: valor estimado de las pérdidas acumuladas por el clima entre 2024 y 2030", s: "NDC 3.0 de México"},
+    {i: "🐾", t: "Los animales", b: "Cuando cambian el calor y el agua, cambian también los lugares donde los animales pueden vivir.",
+     n: "", d: "", s: ""},
+    {i: "🎓", t: "Mi futuro", b: "El clima ya está entrando a las escuelas.",
+     n: "25.5%", d: "de las escuelas de media superior de México no tiene agua potable", s: "SEP, 2023, en UNICEF México y SEMARNAT, 2026"},
+    {i: "🤔", t: "Todavía no sé", b: "Está bien no tenerlo claro. Escuchar qué le importa a los demás ya es un buen primer paso.",
+     n: "", d: "", s: ""}
+  ];
+
   /* ---------- ¡Adivina! (Módulo 1, lecciones 2, 8 y 11) ---------- */
   var GUESSES = [
     {q: "¿México se calienta más rápido o más lento que el promedio mundial?",
@@ -19,8 +52,8 @@
      s: "NDC 3.0 México, p. 92"},
     {q: "¿Qué porcentaje de las emisiones globales produce América Latina y el Caribe?",
      o: ["Entre 6.7% y 10%", "Alrededor de 25%", "Alrededor de 40%"], a: 0,
-     e: "Menos de una décima parte. Y aun así es una de las regiones más golpeadas por desastres climáticos.",
-     s: "Módulo 1, lección 11 (fuentes en el sitio de Xlatierra)"}
+     e: "Menos de una décima parte: 6.7% de las emisiones de 2019 y 10% de las acumuladas en la historia. Y aun así es una de las regiones más golpeadas por desastres climáticos.",
+     s: "OCDE, Environment at a Glance in Latin America and the Caribbean (6.7%, 2019); PNUMA FI (2025), Financiamiento para la transición justa en ALC, p. 4 (10% acumulado)"}
   ];
 
   /* ---------- ¿Mito o dato? (Módulo 1, lección 12) ---------- */
@@ -38,6 +71,47 @@
   ];
 
   function $(id) { return document.getElementById(id); }
+
+  /* ---------- Recuadros de Slido ---------- */
+  if (SLIDO.codigo) {
+    document.querySelectorAll("[data-slido]").forEach(function (el) {
+      var link = SLIDO.enlace ? " · <a href='" + SLIDO.enlace + "' target='_blank' rel='noopener'>abrir</a>" : "";
+      el.innerHTML = "📱 Entra a <b>slido.com</b> con el código <b>#" + SLIDO.codigo + "</b>" + link;
+      el.hidden = false;
+    });
+  }
+
+  /* ---------- El árbol: una pregunta a la vez + temporizador ---------- */
+  var ti = 0, tLeft = 120, tInt = null;
+  function fmt(s) { return Math.floor(s / 60) + ":" + ("0" + (s % 60)).slice(-2); }
+  function stopTimer() { if (tInt) { clearInterval(tInt); tInt = null; } }
+  function drawTree() {
+    var t = TREE[ti];
+    $("treeQ").innerHTML = "<div class='tq-n'>Pregunta " + (ti + 1) + " de 3</div><div class='tq-l'>" + t.label + "</div><div class='tq-q'>" + t.q + "</div>";
+    ["tRoots", "tTrunk", "tLeaves"].forEach(function (id) { $(id).classList.remove("on"); });
+    $({roots: "tRoots", trunk: "tTrunk", leaves: "tLeaves"}[t.part]).classList.add("on");
+    stopTimer(); tLeft = 120; $("tTimer").textContent = fmt(tLeft); $("tTimer").classList.remove("end");
+    $("tNext").textContent = ti < TREE.length - 1 ? "Siguiente pregunta →" : "↺ Volver a la primera";
+  }
+  $("tStart").onclick = function () {
+    stopTimer(); tLeft = 120; $("tTimer").classList.remove("end");
+    tInt = setInterval(function () {
+      tLeft--; $("tTimer").textContent = fmt(Math.max(tLeft, 0));
+      if (tLeft <= 0) { stopTimer(); $("tTimer").classList.add("end"); }
+    }, 1000);
+  };
+  $("tNext").onclick = function () { ti = (ti + 1) % TREE.length; drawTree(); };
+  drawTree();
+
+  /* ---------- ¿Qué te importa? ---------- */
+  $("cares").innerHTML = CARES.map(function (c, i) {
+    var dato = c.n ? "<div class='c-n'><b>" + c.n + "</b> " + c.d + "<i>" + c.s + "</i></div>" : "";
+    return "<button type='button' class='care' data-i='" + i + "'><span class='c-i'>" + c.i + "</span><span class='c-t'>" + c.t + "</span>" +
+      "<span class='c-b'>" + c.b + dato + "</span></button>";
+  }).join("");
+  document.querySelectorAll(".care").forEach(function (b) {
+    b.onclick = function () { b.classList.toggle("open"); };
+  });
 
   /* ---------- Levanta la mano: una frase a la vez ---------- */
   var hands = $("hands").children, hi = 0;
@@ -180,7 +254,7 @@
   };
   document.addEventListener("keydown", function (e) {
     var tag = (e.target.tagName || "").toLowerCase();
-    if (tag === "input" || tag === "textarea") return;
+    if (tag === "input" || tag === "textarea" || tag === "iframe") return;
     if (e.key === "ArrowRight" || e.key === "ArrowDown" || e.key === "PageDown" || e.key === " ") { e.preventDefault(); go(current() + 1); }
     if (e.key === "ArrowLeft" || e.key === "ArrowUp" || e.key === "PageUp") { e.preventDefault(); go(current() - 1); }
   });
