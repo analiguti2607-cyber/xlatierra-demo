@@ -84,7 +84,7 @@
 <!-- 3 · QUÉ ES -->
 <section class="slide" id="que-es">
   <div class="narrow">
-    <div class="guide-row"><img src="img/personaje-espiritu.png" alt=""><div><p class="kicker">Saber</p><h2>¿Qué es el cambio climático?</h2></div></div>
+    <div class="guide-row"><img src="img/personaje-espiritu.png" alt=""><div><p class="kicker">Unidad 1 · Lo básico</p><h2>¿Qué es el cambio climático?</h2></div></div>
     <p class="big">El cambio climático es el calentamiento rápido y duradero del planeta causado por actividades humanas. Al quemar carbón, petróleo y gas, y al talar bosques, llenamos la atmósfera de gases que atrapan calor, como una cobija extra. Eso cambia las lluvias e intensifica las olas de calor, las sequías y los huracanes.</p>
     <div class="stats">
       <div class="stat"><b>1.1 °C</b>calentamiento global respecto a 1850–1900<i>IPCC AR6</i></div>
@@ -95,29 +95,78 @@
   </div>
 </section>
 
+<!-- TIEMPO Y CLIMA (Módulo 1, lección 2) -->
+<section class="slide" id="tiempo-clima">
+  <div class="narrow">
+    <div class="guide-row"><img src="img/pose-espiritu-feliz.png" alt=""><div><p class="kicker">Unidad 1 · Lo básico</p><h2>Tiempo y clima: no son lo mismo</h2></div></div>
+    <p>Esta confusión parece pequeña, pero es la puerta de entrada a muchísima desinformación.</p>
+    <div class="table-wrap"><table class="cmp">
+      <thead><tr><th></th><th>🌦️ Tiempo atmosférico</th><th>📊 Clima</th></tr></thead>
+      <tbody>
+        <tr><th>¿Qué describe?</th><td>El estado de la atmósfera en un lugar y momento: temperatura, humedad, lluvia, viento</td><td>El promedio, la variabilidad y la frecuencia de esas condiciones en un periodo largo</td></tr>
+        <tr><th>Escala</th><td>Horas, días o semanas</td><td>Décadas o siglos (mínimo 30 años)</td></tr>
+        <tr><th>Ejemplo</th><td>Un aguacero una tarde en tu ciudad</td><td>Cómo suelen ser las lluvias de tu ciudad si promedias 30 años</td></tr>
+      </tbody>
+    </table></div>
+    <p class="big">El tiempo es lo que pasa hoy; el clima es lo que esperas en promedio a lo largo de décadas. Por eso un día frío o un invierno fuerte no desmienten el calentamiento global: es como juzgar todo un año escolar por un solo examen.</p>
+    <h3 class="game-t">Juego: ¿tiempo o clima?</h3>
+    <p class="muted">Levanta la mano izquierda si crees que es <strong>tiempo</strong> y la derecha si crees que es <strong>clima</strong>.</p>
+    <div class="sorter" id="sortClima"></div>
+    <p class="src">Fuente: Módulo 1 de Xlatierra, lección 2 (IPCC AR6).</p>
+  </div>
+</section>
+
+<!-- EFECTO INVERNADERO (Módulo 1, lección 3) -->
+<section class="slide" id="cobija">
+  <div class="narrow">
+    <div class="guide-row"><img src="img/personaje-espiritu.png" alt=""><div><p class="kicker">Unidad 1 · Lo básico</p><h2>El efecto invernadero: la cobija del planeta</h2></div></div>
+    <ol class="three">
+      <li><b>Entra:</b> la luz del Sol atraviesa la atmósfera y calienta la superficie de la Tierra, el suelo y el mar.</li>
+      <li><b>Sale:</b> la superficie caliente devuelve esa energía hacia afuera como radiación infrarroja, una forma de calor que no podemos ver.</li>
+      <li><b>Se atrapa:</b> los gases de efecto invernadero absorben parte de esa radiación y la vuelven a emitir en todas direcciones, incluida de regreso hacia la superficie.</li>
+    </ol>
+    <div class="gh">
+      <svg id="ghSvg" viewBox="0 0 600 260" role="img" aria-label="La Tierra con su capa de gases">
+        <defs><marker id="ahY" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#f4c542"/></marker><marker id="ahW" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#ffffff"/></marker><marker id="ahR" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#e8634a"/></marker></defs>
+        <rect x="0" y="0" width="600" height="260" fill="#0d3b4a" rx="18"/>
+        <circle cx="70" cy="50" r="28" fill="#f4c542"/>
+        <rect id="ghBand" x="0" y="96" width="600" height="20" fill="#9fd3e0"/>
+        <rect x="0" y="210" width="600" height="50" fill="#5b9a54"/>
+        <g stroke="#f4c542" stroke-width="5" marker-end="url(#ahY)"><line x1="110" y1="70" x2="200" y2="200"/><line x1="140" y1="60" x2="300" y2="200"/></g>
+        <g id="ghOut" stroke="#ffffff" stroke-width="4" stroke-dasharray="8 6" marker-end="url(#ahW)"></g>
+        <g id="ghBack" stroke="#e8634a" stroke-width="5" marker-end="url(#ahR)"></g>
+      </svg>
+      <div class="gh-ctrl" id="ghCtrl"></div>
+      <div class="gh-out" id="ghText" aria-live="polite"></div>
+    </div>
+    <p class="muted small">Flechas amarillas: la luz del Sol que entra. Punteadas: el calor que se escapa al espacio. Rojas: el calor que la cobija regresa a la superficie.</p>
+    <p class="src">Fuente: Módulo 1 de Xlatierra, lección 3 (IPCC AR6).</p>
+  </div>
+</section>
+
+<!-- EMISIONES (Módulo 1, lección 6) -->
+<section class="slide" id="emisiones">
+  <div class="narrow">
+    <div class="guide-row"><img src="img/pose-ajolote-pensativo.png" alt=""><div><p class="kicker">Unidad 2 · Las causas</p><h2>¿De dónde salen las emisiones?</h2></div></div>
+    <p class="big">Las principales fuentes son la quema de carbón, petróleo y gas para producir energía y mover el transporte, la deforestación, los procesos industriales como la producción de cemento y la agricultura intensiva.</p>
+    <div id="guessSector"></div>
+  </div>
+</section>
+
 <!-- 4 · ADIVINA -->
 <section class="slide" id="adivina">
   <div class="narrow">
-    <div class="guide-row"><img src="img/pose-ajolote-pensativo.png" alt=""><div><p class="kicker">Entender</p><h2>¡Adivina!</h2></div></div>
+    <div class="guide-row"><img src="img/pose-ajolote-duda.png" alt=""><div><p class="kicker">Unidad 3 · Impactos y justicia</p><h2>¡Adivina!</h2></div></div>
     <p class="muted">Contesta desde tu celular en Slido; si no tienes celular, levanta la mano. Equivocarte antes de saber la respuesta te ayuda a recordarla.</p>
     <div class="slido-box" data-slido hidden></div>
     <div id="guesses"></div>
   </div>
 </section>
 
-<!-- 5 · MITO O DATO -->
-<section class="slide" id="mito">
-  <div class="narrow">
-    <div class="guide-row"><img src="img/pose-ajolote-duda.png" alt=""><div><p class="kicker">Entender</p><h2>¿Mito o dato?</h2></div></div>
-    <p class="muted">Mano arriba si crees que es <strong>dato</strong>. Mano abajo si crees que es <strong>mito</strong>.</p>
-    <div class="deck" id="deck"></div>
-  </div>
-</section>
-
-<!-- 6 · DE DÓNDE ERES -->
+<!-- DE DÓNDE ERES -->
 <section class="slide" id="mapa">
   <div class="narrow center">
-    <p class="kicker">Tu territorio</p>
+    <p class="kicker">Unidad 3 · Impactos y justicia</p>
     <h2>¿De dónde eres?</h2>
     <p class="big">Busquemos tu estado, o el de tu familia, en el mapa de impactos en México: sequía, costas, huracanes, campo y soluciones, región por región.</p>
     <a class="btn btn-primary" href="https://analiguti2607-cyber.github.io/xlatierra-sitio/mapa-mexico.html" target="_blank" rel="noopener">Abrir el mapa de México ↗</a>
@@ -125,10 +174,63 @@
   </div>
 </section>
 
+<!-- JUSTICIA CLIMÁTICA (Módulo 1, lección 11) -->
+<section class="slide" id="justicia">
+  <div class="narrow">
+    <div class="guide-row"><img src="img/pose-jaguar-planta.png" alt=""><div><p class="kicker">Unidad 3 · Impactos y justicia</p><h2>Justicia climática: ¿quién paga?</h2></div></div>
+    <p class="big">La justicia climática dice que el cambio climático es un problema ético y de derechos humanos: quienes menos han contaminado suelen sufrir los peores impactos, porque tienen menos recursos para protegerse.</p>
+    <div class="stats">
+      <div class="stat"><b>6.7% · 10%</b>de las emisiones globales vienen de América Latina y el Caribe (6.7% en 2019; 10% acumulado en la historia)<i>OCDE; PNUMA FI, 2025</i></div>
+      <div class="stat"><b>169 M</b>niñas, niños y adolescentes en América Latina y el Caribe con alto riesgo climático (4 de cada 5)<i>UNICEF</i></div>
+    </div>
+    <div class="note-w"><b>Dominica (Caribe)</b>Un país que casi no emite vio desplazada al 76% de su niñez por huracanes entre 2016 y 2021.</div>
+    <div class="ask"><span>💬 Platícanos</span>¿Te parece justo? ¿Quién crees que debería pagar?</div>
+    <p class="src">Fuente: Módulo 1 de Xlatierra, lección 11.</p>
+  </div>
+</section>
+
+<!-- KIT + MITO O DATO (Módulo 1, lección 12) -->
+<section class="slide" id="mito">
+  <div class="narrow">
+    <div class="guide-row"><img src="img/pose-ajolote-duda.png" alt=""><div><p class="kicker">Unidad 4 · Soluciones y acción</p><h2>Tu kit contra la desinformación</h2></div></div>
+    <p>El Foro Económico Mundial ubicó a la desinformación como el mayor riesgo global de corto plazo en 2024. En clima, la desinformación no solo confunde: retrasa decisiones. La buena noticia es que se puede aprender a detectarla.</p>
+    <ol class="kit">
+      <li><b>Busca el consenso:</b> ¿qué dicen el IPCC u organismos científicos? Una opinión aislada no pesa lo mismo que miles de estudios.</li>
+      <li><b>Detecta el falso equilibrio:</b> desconfía cuando un tema científicamente resuelto se presenta como «polémica».</li>
+      <li><b>Revisa credenciales:</b> ¿quien habla es experto en clima o en otra cosa?</li>
+      <li><b>Ojo con los datos escogidos a modo:</b> un invierno frío o una gráfica de pocos meses no muestran la tendencia. Pregunta siempre: ¿de cuántos años son estos datos?</li>
+      <li><b>Triangula:</b> confirma cifras en fuentes oficiales como IPCC, UNESCO, CEPAL, UNICEF, PNUMA o INECC.</li>
+    </ol>
+    <h3 class="game-t">Juego: ¿mito o dato?</h3>
+    <p class="muted">Usa tu kit. Mano arriba si crees que es <strong>dato</strong>; mano abajo si crees que es <strong>mito</strong>.</p>
+    <div class="deck" id="deck"></div>
+    <p class="src">Fuente: Módulo 1 de Xlatierra, lección 12.</p>
+  </div>
+</section>
+
+<!-- MITIGAR O ADAPTARNOS (Módulo 1, lección 14) -->
+<section class="slide" id="mitigar">
+  <div class="narrow">
+    <div class="guide-row"><img src="img/pose-nutria-feliz.png" alt=""><div><p class="kicker">Unidad 4 · Soluciones y acción</p><h2>Soluciones: mitigar y adaptarnos</h2></div></div>
+    <p>Frente al cambio climático hay dos tipos de respuesta, y necesitamos las dos:</p>
+    <div class="table-wrap"><table class="cmp">
+      <thead><tr><th></th><th>🔻 Mitigación</th><th>🛡️ Adaptación</th></tr></thead>
+      <tbody>
+        <tr><th>¿Qué busca?</th><td>Reducir las emisiones para que el calentamiento no empeore</td><td>Prepararnos para los impactos que ya no podemos evitar</td></tr>
+        <tr><th>Ejemplos</th><td>Energía renovable, proteger bosques y manglares, eficiencia, menos desperdicio</td><td>Escuelas y viviendas resistentes, sistemas de alerta, manejo del agua, planes de riesgo</td></tr>
+      </tbody>
+    </table></div>
+    <h3 class="game-t">Juego: ¿mitigar o adaptarnos?</h3>
+    <p class="muted">Mano izquierda: <strong>mitigación</strong>. Mano derecha: <strong>adaptación</strong>.</p>
+    <div class="sorter" id="sortMitiga"></div>
+    <p class="src">Fuente: Módulo 1 de Xlatierra, lección 14.</p>
+  </div>
+</section>
+
 <!-- BUENAS NOTICIAS (textos del Refugio de líderes, con su fuente) -->
 <section class="slide" id="logros">
   <div class="narrow">
-    <div class="guide-row"><img src="img/pose-nutria-megafono.png" alt=""><div><p class="kicker">Sí se puede</p><h2>Cuando la gente se organiza, funciona</h2></div></div>
+    <div class="guide-row"><img src="img/pose-nutria-megafono.png" alt=""><div><p class="kicker">Unidad 4 · Sí se puede</p><h2>Cuando la gente se organiza, funciona</h2></div></div>
     <div class="news">
       <article class="new">
         <span class="ico">⚖️</span>
@@ -150,7 +252,7 @@
 <!-- 7 · TU CARRERA -->
 <section class="slide" id="carrera">
   <div class="wrap">
-    <div class="guide-row"><img src="img/pose-jaguar-planta.png" alt=""><div><p class="kicker">Lo que estudias importa</p><h2>Tu carrera también es climática</h2></div></div>
+    <div class="guide-row"><img src="img/personaje-jaguar.png" alt=""><div><p class="kicker">Unidad 4 · Lo que estudias importa</p><h2>Tu carrera también es climática</h2></div></div>
     <p class="big">No hace falta estudiar «algo de medio ambiente» para cuidar el planeta. Lo que aprendes hoy es una herramienta, y el clima necesita de todas.</p>
     <div class="jobs">
       <div class="job"><span>📊</span><b>Contabilidad y administración</b>Sin presupuesto no hay proyecto: las finanzas deciden qué soluciones se hacen realidad.</div>

@@ -162,3 +162,39 @@ body.present .care{font-size:1.05rem}
 body.present .c-t{font-size:1.25rem}
 .cares{align-items:start;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
 @media(min-width:900px){.cares{grid-template-columns:repeat(4,minmax(0,1fr))}}
+
+/* Módulo: tablas, juegos y cobija */
+.table-wrap{overflow-x:auto;margin:14px 0}
+table.cmp{width:100%;border-collapse:collapse;background:#fff;border-radius:14px;overflow:hidden;box-shadow:var(--shadow);font-size:.95rem}
+table.cmp th,table.cmp td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+table.cmp thead th{background:var(--teal);color:#fff;font-weight:600}
+table.cmp tbody th{color:var(--teal);font-weight:600;white-space:nowrap}
+table.cmp.mini{margin-top:12px;font-size:.88rem;box-shadow:none;border:1px solid var(--line)}
+table.cmp.mini td:last-child{white-space:nowrap;text-align:right;font-weight:600}
+.game-t{font-family:'Poppins',sans-serif;font-weight:600;color:var(--terra);font-size:1.05rem;margin:26px 0 4px}
+.sorter .card-m{background:#fff;border-radius:24px;padding:24px;box-shadow:var(--shadow);text-align:center}
+.sorter .count{font-size:.85rem;color:var(--muted)}
+.sorter .claim{font-family:'Caudex',Georgia,serif;font-size:1.45rem;color:var(--teal);margin:10px 0 18px;line-height:1.3}
+.sorter .claim.small-c{font-size:1.3rem}
+.sorter .vote{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.sorter .verdict{display:none;margin-top:16px}
+.sorter .verdict b{display:block;font-size:1.15rem;margin-bottom:4px}
+.sorter .done .verdict{display:block}
+.sorter .next{margin-top:14px}
+.three{padding-left:22px;margin:12px 0}
+.three li{margin-bottom:8px}
+.kit{padding-left:22px}
+.kit li{margin-bottom:8px}
+.gh{background:#fff;border-radius:20px;padding:14px;box-shadow:var(--shadow);margin:14px 0}
+.gh svg{width:100%;height:auto;display:block;border-radius:14px}
+#ghBand{transition:all .5s}
+.gh-ctrl{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:12px 0}
+.gh-ctrl button{font-family:inherit;font-size:.95rem;border:2px solid var(--line);background:var(--soft);border-radius:999px;padding:8px 16px;cursor:pointer;color:var(--ink)}
+.gh-ctrl button.on{background:var(--teal);color:#fff;border-color:var(--teal)}
+.gh-out{text-align:center;min-height:4.5em}
+.gh-out b{display:block;font-family:'Caudex',Georgia,serif;font-size:1.3rem;color:var(--teal);margin-bottom:4px}
+.note-w{background:#fff7e8;border-left:5px solid var(--terra);border-radius:14px;padding:14px 18px;margin:12px 0}
+.note-w b{display:block;color:var(--terra)}
+.expl p{margin:0 0 6px}
+body.present .sorter .claim{font-size:2.1rem}
+body.present table.cmp{font-size:1.15rem}

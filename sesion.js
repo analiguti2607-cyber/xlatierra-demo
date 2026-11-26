@@ -40,7 +40,7 @@
      n: "", d: "", s: ""}
   ];
 
-  /* ---------- ¡Adivina! (Módulo 1, lecciones 2, 8 y 11) ---------- */
+  /* ---------- ¡Adivina! (Módulo 1, lecciones 2, 8 y 13) ---------- */
   var GUESSES = [
     {q: "¿México se calienta más rápido o más lento que el promedio mundial?",
      o: ["Más lento", "Igual", "Más rápido"], a: 2,
@@ -50,10 +50,10 @@
      o: ["Alrededor de 15%", "Alrededor de 45%", "Alrededor de 86%"], a: 2,
      e: "<strong>86%</strong>. La sequía es un fenómeno lento: avanza poco a poco y por eso a veces no la notamos hasta que falta el agua.",
      s: "NDC 3.0 México, p. 92"},
-    {q: "¿Qué porcentaje de las emisiones globales produce América Latina y el Caribe?",
-     o: ["Entre 6.7% y 10%", "Alrededor de 25%", "Alrededor de 40%"], a: 0,
-     e: "Menos de una décima parte: 6.7% de las emisiones de 2019 y 10% de las acumuladas en la historia. Y aun así es una de las regiones más golpeadas por desastres climáticos.",
-     s: "OCDE, Environment at a Glance in Latin America and the Caribbean (6.7%, 2019); PNUMA FI (2025), Financiamiento para la transición justa en ALC, p. 4 (10% acumulado)"}
+    {q: "¿Qué significa el famoso límite de «1.5 °C»?",
+     o: ["La temperatura de un día caluroso", "El aumento del promedio global de temperatura respecto a 1850–1900", "La temperatura máxima permitida en México"], a: 1,
+     e: "Es el aumento del promedio del planeta respecto a la época preindustrial. Como ya vamos en 1.1 °C, el margen que queda es de unos 0.4 °C. Limitarlo a 1.5 °C en lugar de 2 °C reduce la proporción de personas expuestas a olas de calor extremo de 37% a 14%.",
+     s: "Módulo 1, lección 13 (IPCC)"}
   ];
 
   /* ---------- ¿Mito o dato? (Módulo 1, lección 12) ---------- */
@@ -69,6 +69,49 @@
     {t: "Alrededor del 97% de especialistas en clima coincide en que el calentamiento actual lo causamos los humanos.", a: 0,
      e: "Es el consenso científico, documentado en varios estudios."}
   ];
+
+  /* ---------- ¿Tiempo o clima? (Módulo 1, lección 2) ---------- */
+  var SORT_CLIMA = {labels: ["🌦️ Tiempo", "📊 Clima"],
+    done: "Truco para no confundirte: si la frase habla de hoy, ayer, mañana o «este» invierno, es tiempo. Si habla de lo que «suele» pasar o de tendencias de muchos años, es clima.",
+    items: [
+      {n: "«Mañana va a llover en Monterrey.»", a: 0, e: "Es un pronóstico de un día: tiempo."},
+      {n: "«En la Ciudad de México, la temporada de lluvias suele ir de mayo a octubre.»", a: 1, e: "Describe lo que pasa normalmente año con año: clima."},
+      {n: "«Este invierno fue muy frío en Chihuahua.»", a: 0, e: "Una sola temporada es tiempo. Por eso un invierno frío no desmiente el calentamiento."},
+      {n: "«La temperatura promedio de México ha aumentado desde inicios del siglo XX.»", a: 1, e: "Es una tendencia de más de un siglo: clima."},
+      {n: "«Hoy hay una ola de calor en Hermosillo.»", a: 0, e: "Es lo que pasa hoy: tiempo. (Que las olas de calor sean más frecuentes con los años sí sería clima.)"},
+      {n: "«Los veranos en Mérida suelen ser calurosos y húmedos.»", a: 1, e: "«Suelen» es la palabra clave: lo típico es clima."}
+    ]};
+
+  /* ---------- ¿Mitigar o adaptarnos? (Módulo 1, lección 14) ---------- */
+  var SORT_MITIGA = {labels: ["🔻 Mitigación", "🛡️ Adaptación"],
+    done: "Necesitamos las dos: mitigar para que el problema no crezca y adaptarnos a lo que ya está pasando. Algunas soluciones, como los manglares, hacen las dos cosas.",
+    items: [
+      {n: "☀️ Instalar paneles solares en una escuela", a: 0, e: "Produce electricidad sin quemar combustibles fósiles: reduce emisiones."},
+      {n: "🌊 Un plan escolar ante inundaciones", a: 1, e: "Prepara a la comunidad para un impacto: adaptación."},
+      {n: "🌿 Proteger y restaurar manglares", a: 0, e: "Guardan mucho carbono (carbono azul), así que es mitigación. ¡Y además protegen la costa de tormentas, que es adaptación! Hace las dos cosas."},
+      {n: "📢 Sistemas de alerta ante olas de calor", a: 1, e: "Avisan a tiempo para protegernos de un impacto: adaptación."},
+      {n: "♻️ Economía circular: reparar, reusar y reciclar materiales", a: 0, e: "Fabricar menos materiales nuevos evita emisiones."},
+      {n: "🚰 Cuidar y manejar mejor el agua ante sequías", a: 1, e: "Nos prepara para tener agua aunque llueva menos: adaptación."}
+    ]};
+
+  /* ---------- La cobija del planeta (Módulo 1, lección 3) ---------- */
+  var GH = [
+    {short: "Sin gases", name: "Sin cobija", temp: "−18 °C", band: 0, back: 0, out: 3, text: "Sin efecto invernadero, casi todo el calor se escaparía al espacio. La Tierra sería un planeta helado de unos −18 °C en promedio."},
+    {short: "Natural", name: "La cobija natural", temp: "≈ 15 °C", band: 18, back: 1, out: 2, text: "El efecto invernadero natural mantiene la Tierra unos 33 °C más caliente que sin él. Gracias a esta cobija existe la vida como la conocemos."},
+    {short: "Hoy", name: "Hoy: una cobija más gruesa", temp: "+1.1 °C", band: 34, back: 2, out: 2, text: "Desde el siglo XIX hemos agregado gases. Entra la misma energía del Sol, pero sale menos: el planeta ya está 1.1 °C más caliente que en la época preindustrial."},
+    {short: "Más gases", name: "Si seguimos emitiendo", temp: "sube…", band: 52, back: 3, out: 1, text: "Cada tonelada de CO₂ engrosa la cobija y se queda ahí durante siglos. Mientras sigamos sumando emisiones, la temperatura seguirá subiendo. Por eso hay que llegar a cero emisiones netas."}
+  ];
+
+  /* ---------- ¿De dónde salen las emisiones? (Módulo 1, lección 6) ---------- */
+  var SECTOR = {q: "A nivel mundial, ¿qué sector produce más gases de efecto invernadero?",
+    o: ["Agricultura", "Energía", "Basura y residuos", "Procesos industriales"], a: 1,
+    e: "La energía. Incluye producir electricidad y calor, el transporte, la energía que usan fábricas y edificios, y las fugas de gas y petróleo." +
+       "<table class='cmp mini'><thead><tr><th>Sector</th><th>Qué incluye</th><th>Parte de las emisiones globales (2019)</th></tr></thead><tbody>" +
+       "<tr><td>Energía</td><td>Electricidad, calor, transporte, edificios, industria que quema combustibles, fugas</td><td>~76%</td></tr>" +
+       "<tr><td>Agricultura y uso del suelo</td><td>Ganado, fertilizantes, arrozales, deforestación</td><td>~12%</td></tr>" +
+       "<tr><td>Procesos industriales</td><td>Reacciones químicas al fabricar cemento, químicos y otros materiales</td><td>~6%</td></tr>" +
+       "<tr><td>Residuos</td><td>Basureros y aguas residuales (sobre todo metano)</td><td>~3%</td></tr></tbody></table>",
+    s: "Climate Watch / WRI (2019), en el Módulo 1, lección 6"};
 
   function $(id) { return document.getElementById(id); }
 
@@ -122,15 +165,14 @@
     if (hi >= hands.length - 1) this.style.display = "none";
   };
 
-  /* ---------- ¡Adivina! ---------- */
-  var gWrap = $("guesses");
-  GUESSES.forEach(function (g, gi) {
+  /* ---------- ¡Adivina! (y la pregunta de sectores) ---------- */
+  function makeGuess(g, num, wrap) {
     var box = document.createElement("div");
     box.className = "guess";
-    box.innerHTML = "<h3>" + (gi + 1) + ". " + g.q + "</h3><div class='opts'>" +
+    box.innerHTML = "<h3>" + (num ? num + ". " : "") + g.q + "</h3><div class='opts'>" +
       g.o.map(function (o, i) { return "<button type='button' data-i='" + i + "'>" + o + "</button>"; }).join("") +
       "</div><button type='button' class='btn btn-ghost btn-sm show'>Ver respuesta</button>" +
-      "<div class='reveal'><p>" + g.e + "</p><p class='src'>Fuente: " + g.s + "</p></div>";
+      "<div class='reveal'><div class='expl'>" + g.e + "</div><p class='src'>Fuente: " + g.s + "</p></div>";
     function reveal() {
       box.classList.add("done");
       box.querySelectorAll(".opts button").forEach(function (b, i) { b.classList.add(i === g.a ? "ok" : "no"); });
@@ -138,8 +180,60 @@
     }
     box.querySelectorAll(".opts button").forEach(function (b) { b.onclick = reveal; });
     box.querySelector(".show").onclick = reveal;
-    gWrap.appendChild(box);
-  });
+    wrap.appendChild(box);
+  }
+  GUESSES.forEach(function (g, gi) { makeGuess(g, gi + 1, $("guesses")); });
+  makeGuess(SECTOR, 0, $("guessSector"));
+
+  /* ---------- Juegos de clasificar: una frase a la vez, con explicación ---------- */
+  function makeSorter(cfg, wrap) {
+    var k = 0;
+    function draw() {
+      if (k >= cfg.items.length) {
+        wrap.innerHTML = "<div class='card-m'><div class='claim small-c'>¡Listo!</div><p>" + cfg.done + "</p>" +
+          "<button type='button' class='btn btn-ghost btn-sm again'>↺ Empezar de nuevo</button></div>";
+        wrap.querySelector(".again").onclick = function () { k = 0; draw(); };
+        return;
+      }
+      var it = cfg.items[k];
+      wrap.innerHTML = "<div class='card-m'><div class='count'>" + (k + 1) + " de " + cfg.items.length + "</div>" +
+        "<div class='claim'>" + it.n + "</div><div class='vote'>" +
+        "<button type='button' class='btn btn-primary' data-v='0'>" + cfg.labels[0] + "</button>" +
+        "<button type='button' class='btn btn-gold' data-v='1'>" + cfg.labels[1] + "</button></div>" +
+        "<div class='verdict'><b>" + cfg.labels[it.a] + "</b>" + it.e + "</div>" +
+        "<button type='button' class='btn btn-ghost next'>Siguiente →</button></div>";
+      var card = wrap.firstChild, nx = card.querySelector(".next");
+      nx.style.display = "none";
+      card.querySelectorAll(".vote button").forEach(function (b) {
+        b.onclick = function () { card.classList.add("done"); nx.style.display = ""; };
+      });
+      nx.onclick = function () { k++; draw(); };
+    }
+    draw();
+  }
+  makeSorter(SORT_CLIMA, $("sortClima"));
+  makeSorter(SORT_MITIGA, $("sortMitiga"));
+
+  /* ---------- La cobija del planeta ---------- */
+  var NS = "http://www.w3.org/2000/svg";
+  function line(g, x1, y1, x2, y2) {
+    var l = document.createElementNS(NS, "line");
+    l.setAttribute("x1", x1); l.setAttribute("y1", y1); l.setAttribute("x2", x2); l.setAttribute("y2", y2);
+    g.appendChild(l);
+  }
+  function drawGH(i) {
+    var L = GH[i], band = $("ghBand"), out = $("ghOut"), back = $("ghBack");
+    band.setAttribute("height", L.band); band.setAttribute("y", 106 - L.band / 2);
+    band.style.opacity = L.band ? 0.85 : 0;
+    out.innerHTML = ""; back.innerHTML = "";
+    for (var o = 0; o < L.out; o++) line(out, 360 + o * 70, 205, 400 + o * 70, 20);
+    for (var b = 0; b < L.back; b++) line(back, 240 + b * 70, 110, 260 + b * 70, 200);
+    $("ghText").innerHTML = "<b>" + L.name + " · " + L.temp + "</b>" + L.text;
+    document.querySelectorAll("#ghCtrl button").forEach(function (bt, j) { bt.classList.toggle("on", j === i); });
+  }
+  $("ghCtrl").innerHTML = GH.map(function (L, i) { return "<button type='button' data-i='" + i + "'>" + L.short + "</button>"; }).join("");
+  document.querySelectorAll("#ghCtrl button").forEach(function (bt) { bt.onclick = function () { drawGH(+bt.dataset.i); }; });
+  drawGH(1);
 
   /* ---------- ¿Mito o dato? ---------- */
   var di = 0, deck = $("deck");
