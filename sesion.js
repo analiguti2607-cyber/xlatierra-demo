@@ -7,37 +7,15 @@
 (function () {
   "use strict";
 
-  /* ---------- SLIDO ----------
-     Cuando crees tu slido, pega aquí el código (sin #) y el enlace.
-     Mientras esté vacío, los recuadros de Slido no aparecen. */
-  var SLIDO = { codigo: "", enlace: "" };
+  /* ---------- ENCUESTA FINAL ----------
+     Cuando el QR de la encuesta esté en img/qr-encuesta.svg, cambia esto a true. */
+  var ENCUESTA_LISTA = true;
 
   /* ---------- EL ÁRBOL: las tres preguntas, en orden ---------- */
   var TREE = [
     {part: "roots", label: "🌱 Raíz · Lo que me sostiene", q: "¿Qué o quién te impulsa a seguir estudiando?"},
     {part: "trunk", label: "🪵 Tronco · Mi superpoder", q: "¿Qué sabes hacer bien? Cocinar, escuchar, organizar, arreglar cosas, hacer reír…"},
     {part: "leaves", label: "🍃 Hoja · Lo que quiero sembrar", q: "¿Qué quieres sembrar con lo que estudias?"}
-  ];
-
-  /* ---------- ¿QUÉ TE IMPORTA? ----------
-     Cada dato viene del sitio de Xlatierra, con su fuente. */
-  var CARES = [
-    {i: "🏠", t: "Mi familia", b: "Cuidar a tu familia hoy también es protegerla del calor.",
-     n: "45 M", d: "de niñas, niños y adolescentes en América Latina están expuestos a olas de calor extremas", s: "UNICEF"},
-    {i: "🏘️", t: "Mi colonia", b: "Cuando falta el agua o se inunda la calle, lo vive primero la colonia.",
-     n: "64%", d: "del territorio de México tuvo estrés hídrico en 2025; ahí vive cerca del 70% de la población", s: "NDC 3.0 de México"},
-    {i: "🍲", t: "La comida", b: "Lo que comes depende de que llueva a tiempo en el campo.",
-     n: "2.8 millones", d: "de hectáreas de cultivo se perdieron por sequía entre 2018 y 2023, sobre todo maíz y frijol", s: "NDC 3.0 de México, con datos del SIAP"},
-    {i: "🩺", t: "La salud", b: "El calor y los cambios en las lluvias modifican dónde y cuándo pueden vivir los mosquitos que transmiten el dengue.",
-     n: "115 M", d: "de niñas, niños y adolescentes en América Latina están expuestos al dengue", s: "UNICEF"},
-    {i: "💰", t: "El dinero y el trabajo", b: "Los desastres y las sequías cuestan: a las familias, a los negocios y al país.",
-     n: "25%", d: "del PIB de México de 2024: valor estimado de las pérdidas acumuladas por el clima entre 2024 y 2030", s: "NDC 3.0 de México"},
-    {i: "🐾", t: "Los animales", b: "Cuando cambian el calor y el agua, cambian también los lugares donde los animales pueden vivir.",
-     n: "", d: "", s: ""},
-    {i: "🎓", t: "Mi futuro", b: "El clima ya está entrando a las escuelas.",
-     n: "25.5%", d: "de las escuelas de media superior de México no tiene agua potable", s: "SEP, 2023, en UNICEF México y SEMARNAT, 2026"},
-    {i: "🤔", t: "Todavía no sé", b: "Está bien no tenerlo claro. Escuchar qué le importa a los demás ya es un buen primer paso.",
-     n: "", d: "", s: ""}
   ];
 
   /* ---------- ¡Adivina! (Módulo 1, lecciones 2, 8 y 13) ---------- */
@@ -60,12 +38,8 @@
   var DECK = [
     {t: "El clima siempre ha cambiado, así que el calentamiento actual es natural.", a: 1,
      e: "Es cierto que el clima ha cambiado antes, pero el IPCC concluye que el calentamiento de 1.1 °C desde la era preindustrial se debe a la actividad humana."},
-    {t: "Los océanos absorben alrededor del 91% del calor extra que hemos atrapado.", a: 0,
-     e: "Según el IPCC, el océano guarda la mayor parte; la atmósfera, apenas cerca de 1%."},
     {t: "Un invierno muy frío demuestra que el calentamiento global se detuvo.", a: 1,
      e: "Un invierno es tiempo, no clima. Usar un dato corto para negar una tendencia de décadas es «escoger datos a modo»."},
-    {t: "El agujero en la capa de ozono es lo que calienta al planeta.", a: 1,
-     e: "El agujero de ozono deja pasar más radiación ultravioleta. El calentamiento lo causan los gases de efecto invernadero, que atrapan radiación infrarroja."},
     {t: "Alrededor del 97% de especialistas en clima coincide en que el calentamiento actual lo causamos los humanos.", a: 0,
      e: "Es el consenso científico, documentado en varios estudios."}
   ];
@@ -76,10 +50,7 @@
     items: [
       {n: "«Mañana va a llover en Monterrey.»", a: 0, e: "Es un pronóstico de un día: tiempo."},
       {n: "«En la Ciudad de México, la temporada de lluvias suele ir de mayo a octubre.»", a: 1, e: "Describe lo que pasa normalmente año con año: clima."},
-      {n: "«Este invierno fue muy frío en Chihuahua.»", a: 0, e: "Una sola temporada es tiempo. Por eso un invierno frío no desmiente el calentamiento."},
-      {n: "«La temperatura promedio de México ha aumentado desde inicios del siglo XX.»", a: 1, e: "Es una tendencia de más de un siglo: clima."},
-      {n: "«Hoy hay una ola de calor en Hermosillo.»", a: 0, e: "Es lo que pasa hoy: tiempo. (Que las olas de calor sean más frecuentes con los años sí sería clima.)"},
-      {n: "«Los veranos en Mérida suelen ser calurosos y húmedos.»", a: 1, e: "«Suelen» es la palabra clave: lo típico es clima."}
+      {n: "«Este invierno fue muy frío en Chihuahua.»", a: 0, e: "Una sola temporada es tiempo. Por eso un invierno frío no desmiente el calentamiento."}
     ]};
 
   /* ---------- ¿Mitigar o adaptarnos? (Módulo 1, lección 14) ---------- */
@@ -89,9 +60,7 @@
       {n: "☀️ Instalar paneles solares en una escuela", a: 0, e: "Produce electricidad sin quemar combustibles fósiles: reduce emisiones."},
       {n: "🌊 Un plan escolar ante inundaciones", a: 1, e: "Prepara a la comunidad para un impacto: adaptación."},
       {n: "🌿 Proteger y restaurar manglares", a: 0, e: "Guardan mucho carbono (carbono azul), así que es mitigación. ¡Y además protegen la costa de tormentas, que es adaptación! Hace las dos cosas."},
-      {n: "📢 Sistemas de alerta ante olas de calor", a: 1, e: "Avisan a tiempo para protegernos de un impacto: adaptación."},
-      {n: "♻️ Economía circular: reparar, reusar y reciclar materiales", a: 0, e: "Fabricar menos materiales nuevos evita emisiones."},
-      {n: "🚰 Cuidar y manejar mejor el agua ante sequías", a: 1, e: "Nos prepara para tener agua aunque llueva menos: adaptación."}
+      {n: "📢 Sistemas de alerta ante olas de calor", a: 1, e: "Avisan a tiempo para protegernos de un impacto: adaptación."}
     ]};
 
   /* ---------- La cobija del planeta (Módulo 1, lección 3) ---------- */
@@ -115,17 +84,8 @@
 
   function $(id) { return document.getElementById(id); }
 
-  /* ---------- Recuadros de Slido ---------- */
-  if (SLIDO.codigo) {
-    document.querySelectorAll("[data-slido]").forEach(function (el) {
-      var link = SLIDO.enlace ? " · <a href='" + SLIDO.enlace + "' target='_blank' rel='noopener'>abrir</a>" : "";
-      el.innerHTML = "📱 Entra a <b>slido.com</b> con el código <b>#" + SLIDO.codigo + "</b>" + link;
-      el.hidden = false;
-    });
-  }
-
   /* ---------- El árbol: una pregunta a la vez + temporizador ---------- */
-  var ti = 0, tLeft = 120, tInt = null;
+  var ti = 0, TSEC = 90, tLeft = TSEC, tInt = null;
   function fmt(s) { return Math.floor(s / 60) + ":" + ("0" + (s % 60)).slice(-2); }
   function stopTimer() { if (tInt) { clearInterval(tInt); tInt = null; } }
   function drawTree() {
@@ -133,11 +93,11 @@
     $("treeQ").innerHTML = "<div class='tq-n'>Pregunta " + (ti + 1) + " de 3</div><div class='tq-l'>" + t.label + "</div><div class='tq-q'>" + t.q + "</div>";
     ["tRoots", "tTrunk", "tLeaves"].forEach(function (id) { $(id).classList.remove("on"); });
     $({roots: "tRoots", trunk: "tTrunk", leaves: "tLeaves"}[t.part]).classList.add("on");
-    stopTimer(); tLeft = 120; $("tTimer").textContent = fmt(tLeft); $("tTimer").classList.remove("end");
+    stopTimer(); tLeft = TSEC; $("tTimer").textContent = fmt(tLeft); $("tTimer").classList.remove("end");
     $("tNext").textContent = ti < TREE.length - 1 ? "Siguiente pregunta →" : "↺ Volver a la primera";
   }
   $("tStart").onclick = function () {
-    stopTimer(); tLeft = 120; $("tTimer").classList.remove("end");
+    stopTimer(); tLeft = TSEC; $("tTimer").classList.remove("end");
     tInt = setInterval(function () {
       tLeft--; $("tTimer").textContent = fmt(Math.max(tLeft, 0));
       if (tLeft <= 0) { stopTimer(); $("tTimer").classList.add("end"); }
@@ -146,15 +106,7 @@
   $("tNext").onclick = function () { ti = (ti + 1) % TREE.length; drawTree(); };
   drawTree();
 
-  /* ---------- ¿Qué te importa? ---------- */
-  $("cares").innerHTML = CARES.map(function (c, i) {
-    var dato = c.n ? "<div class='c-n'><b>" + c.n + "</b> " + c.d + "<i>" + c.s + "</i></div>" : "";
-    return "<button type='button' class='care' data-i='" + i + "'><span class='c-i'>" + c.i + "</span><span class='c-t'>" + c.t + "</span>" +
-      "<span class='c-b'>" + c.b + dato + "</span></button>";
-  }).join("");
-  document.querySelectorAll(".care").forEach(function (b) {
-    b.onclick = function () { b.classList.toggle("open"); };
-  });
+  if (ENCUESTA_LISTA) $("qrForm").hidden = false;
 
   /* ---------- Levanta la mano: una frase a la vez ---------- */
   var hands = $("hands").children, hi = 0;
@@ -182,8 +134,6 @@
     box.querySelector(".show").onclick = reveal;
     wrap.appendChild(box);
   }
-  GUESSES.forEach(function (g, gi) { makeGuess(g, gi + 1, $("guesses")); });
-  makeGuess(SECTOR, 0, $("guessSector"));
 
   /* ---------- Juegos de clasificar: una frase a la vez, con explicación ---------- */
   function makeSorter(cfg, wrap) {
