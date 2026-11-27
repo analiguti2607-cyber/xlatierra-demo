@@ -319,9 +319,11 @@
       x.textAlign = "right"; x.font = "600 26px Poppins, sans-serif"; x.fillStyle = "#ffffff";
       x.fillText("@x.latierra", W - 60, H - 56);
       var url; try { url = cv.toDataURL("image/png"); } catch (e) { url = null; }
-      $("pDl").innerHTML = "<div class='dl'>" + (url ? "<a class='btn btn-primary' download='Lo_que_siembro_hoy_Xlatierra.png' href='" + url + "'>Descargar mi tarjeta</a>" : "") +
-        "</div><p class='muted small center'>Guárdala de fondo de pantalla o súbela a tus historias y etiqueta a @x.latierra.</p>";
-      cv.scrollIntoView({behavior: "smooth", block: "center"});
+      if (url) { cv.hidden = true; }
+      $("pDl").innerHTML = (url ? "<img class='card-img' alt='Tu tarjeta Lo que siembro hoy' src='" + url + "'>" : "") +
+        "<div class='dl'>" + (url ? "<a class='btn btn-primary' download='Lo_que_siembro_hoy_Xlatierra.png' href='" + url + "'>Descargar mi tarjeta</a>" : "") +
+        "</div><p class='muted small center'>¿No se descarga? Mantén presionada la imagen y elige «Guardar imagen». Úsala de fondo de pantalla o súbela a tus historias y etiqueta a @x.latierra.</p>";
+      $("pDl").scrollIntoView({behavior: "smooth", block: "center"});
     }
   };
 
