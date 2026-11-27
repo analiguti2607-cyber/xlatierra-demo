@@ -38,8 +38,12 @@
   var DECK = [
     {t: "El clima siempre ha cambiado, así que el calentamiento actual es natural.", a: 1,
      e: "Es cierto que el clima ha cambiado antes, pero el IPCC concluye que el calentamiento de 1.1 °C desde la era preindustrial se debe a la actividad humana."},
+    {t: "Los océanos absorben alrededor del 91% del calor extra que hemos atrapado.", a: 0,
+     e: "Según el IPCC, el océano guarda la mayor parte; la atmósfera, apenas cerca de 1%."},
     {t: "Un invierno muy frío demuestra que el calentamiento global se detuvo.", a: 1,
      e: "Un invierno es tiempo, no clima. Usar un dato corto para negar una tendencia de décadas es «escoger datos a modo»."},
+    {t: "El agujero en la capa de ozono es lo que calienta al planeta.", a: 1,
+     e: "El agujero de ozono deja pasar más radiación ultravioleta. El calentamiento lo causan los gases de efecto invernadero, que atrapan radiación infrarroja."},
     {t: "Alrededor del 97% de especialistas en clima coincide en que el calentamiento actual lo causamos los humanos.", a: 0,
      e: "Es el consenso científico, documentado en varios estudios."}
   ];
@@ -50,7 +54,10 @@
     items: [
       {n: "«Mañana va a llover en Monterrey.»", a: 0, e: "Es un pronóstico de un día: tiempo."},
       {n: "«En la Ciudad de México, la temporada de lluvias suele ir de mayo a octubre.»", a: 1, e: "Describe lo que pasa normalmente año con año: clima."},
-      {n: "«Este invierno fue muy frío en Chihuahua.»", a: 0, e: "Una sola temporada es tiempo. Por eso un invierno frío no desmiente el calentamiento."}
+      {n: "«Este invierno fue muy frío en Chihuahua.»", a: 0, e: "Una sola temporada es tiempo. Por eso un invierno frío no desmiente el calentamiento."},
+      {n: "«La temperatura promedio de México ha aumentado desde inicios del siglo XX.»", a: 1, e: "Es una tendencia de más de un siglo: clima."},
+      {n: "«Hoy hay una ola de calor en Hermosillo.»", a: 0, e: "Es lo que pasa hoy: tiempo. (Que las olas de calor sean más frecuentes con los años sí sería clima.)"},
+      {n: "«Los veranos en Mérida suelen ser calurosos y húmedos.»", a: 1, e: "«Suelen» es la palabra clave: lo típico es clima."}
     ]};
 
   /* ---------- ¿Mitigar o adaptarnos? (Módulo 1, lección 14) ---------- */
@@ -60,7 +67,9 @@
       {n: "☀️ Instalar paneles solares en una escuela", a: 0, e: "Produce electricidad sin quemar combustibles fósiles: reduce emisiones."},
       {n: "🌊 Un plan escolar ante inundaciones", a: 1, e: "Prepara a la comunidad para un impacto: adaptación."},
       {n: "🌿 Proteger y restaurar manglares", a: 0, e: "Guardan mucho carbono (carbono azul), así que es mitigación. ¡Y además protegen la costa de tormentas, que es adaptación! Hace las dos cosas."},
-      {n: "📢 Sistemas de alerta ante olas de calor", a: 1, e: "Avisan a tiempo para protegernos de un impacto: adaptación."}
+      {n: "📢 Sistemas de alerta ante olas de calor", a: 1, e: "Avisan a tiempo para protegernos de un impacto: adaptación."},
+      {n: "♻️ Economía circular: reparar, reusar y reciclar materiales", a: 0, e: "Fabricar menos materiales nuevos evita emisiones."},
+      {n: "🚰 Cuidar y manejar mejor el agua ante sequías", a: 1, e: "Nos prepara para tener agua aunque llueva menos: adaptación."}
     ]};
 
   /* ---------- La cobija del planeta (Módulo 1, lección 3) ---------- */
@@ -83,6 +92,7 @@
     s: "Climate Watch / WRI (2019), en el Módulo 1, lección 6"};
 
   function $(id) { return document.getElementById(id); }
+  function safe(fn) { try { fn(); } catch (e) { if (window.console) console.error("Xlatierra:", e); } }
 
   /* ---------- El árbol: una pregunta a la vez + temporizador ---------- */
   var ti = 0, TSEC = 90, tLeft = TSEC, tInt = null;
@@ -104,9 +114,9 @@
     }, 1000);
   };
   $("tNext").onclick = function () { ti = (ti + 1) % TREE.length; drawTree(); };
-  drawTree();
+  safe(drawTree);
 
-  if (ENCUESTA_LISTA) $("qrForm").hidden = false;
+  safe(function () { if (ENCUESTA_LISTA) $("qrForm").hidden = false; });
 
   /* ---------- Levanta la mano: una frase a la vez ---------- */
   var hands = $("hands").children, hi = 0;
@@ -161,8 +171,8 @@
     }
     draw();
   }
-  makeSorter(SORT_CLIMA, $("sortClima"));
-  makeSorter(SORT_MITIGA, $("sortMitiga"));
+  safe(function () { makeSorter(SORT_CLIMA, $("sortClima")); });
+  safe(function () { makeSorter(SORT_MITIGA, $("sortMitiga")); });
 
   /* ---------- La cobija del planeta ---------- */
   var NS = "http://www.w3.org/2000/svg";
@@ -183,7 +193,7 @@
   }
   $("ghCtrl").innerHTML = GH.map(function (L, i) { return "<button type='button' data-i='" + i + "'>" + L.short + "</button>"; }).join("");
   document.querySelectorAll("#ghCtrl button").forEach(function (bt) { bt.onclick = function () { drawGH(+bt.dataset.i); }; });
-  drawGH(1);
+  safe(function () { drawGH(1); });
 
   /* ---------- ¿Mito o dato? ---------- */
   var di = 0, deck = $("deck");
@@ -202,22 +212,7 @@
     });
     if (nx) nx.onclick = function () { di++; drawCard(); };
   }
-  drawCard();
-
-  /* ---------- Respiración: tres ciclos de 4 s ---------- */
-  var bBtn = $("bBtn"), bubble = $("bubble"), bLabel = $("bLabel"), running = false;
-  bBtn.onclick = function () {
-    if (running) return; running = true; bBtn.disabled = true;
-    var n = 0;
-    (function cycle() {
-      if (n >= 3) { bLabel.textContent = "Bien hecho 💙"; bBtn.disabled = false; running = false; return; }
-      n++; bLabel.textContent = "Inhala…"; bubble.classList.add("grow");
-      setTimeout(function () {
-        bLabel.textContent = "Suelta el aire despacio…"; bubble.classList.remove("grow");
-        setTimeout(cycle, 4000);
-      }, 4000);
-    })();
-  };
+  safe(drawCard);
 
   /* ---------- Plan de acción: tarjeta descargable ---------- */
   function wrapLines(x, t, max, maxLines) {
